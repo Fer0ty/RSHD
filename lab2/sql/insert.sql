@@ -10,7 +10,8 @@ DO $$
             table_number := floor(random() * 100) + 1;
             INSERT INTO orders (order_date, table_id)
             VALUES (curr_date, table_number);
-            -- Переход к следующему дню
+           -- Переход к следующему дню
             curr_date := curr_date + interval '1 day';
         END LOOP;
-END $$;
+    END
+$$;
