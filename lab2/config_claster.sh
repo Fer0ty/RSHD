@@ -1,3 +1,7 @@
+# создание
+initdb -E KOI8-R --locale=ru_RU.KOI8-R
+
+# настройка
 echo "listen_addresses = '*'" >> $PGDATA/postgresql.conf
 echo "port = $PGPORT" >> $PGDATA/postgresql.conf
 
