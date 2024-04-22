@@ -1,0 +1,2 @@
+
+CREATE DATABASE seconddb TEMPLATE template1;

@@ -20,10 +20,17 @@
 # Источник: https://timeweb.cloud/tutorials/postgresql/dampy-v-postgresql
 
 # создание резервного копирования
+rm -rf $HOME/backup/firstdb
 mkdir -p $HOME/backup/firstdb
+# TODO: заменить обычным pg_dump по туториалу и не выпендриваться
 pg_basebackup -h localhost -U backup_user -D $HOME/backup/firstdb -F t -X none
 
 # -F t: формат архивации в виде tar-файла
 # -X stream: потоковая передача WAL-файлов (сохранится отдельный файл pg_wal.tar)
 # -X none: отключит потоковую передачу WAL-файлов (pg_wal.tar не создастся)
 
+
+# Отправка дампов на второй узел
+rsync -avzP $HOME/backup/* postgres0@pg191:~/backup/
+
+# TODO: через cron забиндить отправку данных 2 раза в день
