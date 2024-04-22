@@ -17,6 +17,3 @@ psql -h localhost -p 9143 -d firstdb -f sql/create_table.sql
 psql -h localhost -p 9143 -d firstdb -f sql/create_role.sql
 #psql -h localhost -p 9143 -d firstdb -U stepa -f sql/insert.sql
 
-# создание резервного копирования
-pg_basebackup -D $HOME/backup/firstdb -U backup_user -x -P firstdb
-
