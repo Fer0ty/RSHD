@@ -25,5 +25,7 @@
 #-t таблица или --table=таблица: восстанавливаем только указанную таблицу.
 #-x или --no-privileges или --no-acl: не восстанавливаем права доступа.
 
-cd $PGDATA
-pg_restore -h localhost -c -C -d seconddb $HOME/backup/firstdb # не работает, см. ТОДО в uzel_1/create_backup.sh
+#cd $PGDATA
+createdb -h localhost -p 9143 seconddb
+pg_restore -h localhost -p 9143 -d seconddb -x -c $HOME/backup/firstdb.dump
+psql -h localhost -p 9143 -d seconddb
