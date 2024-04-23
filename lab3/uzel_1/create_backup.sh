@@ -43,11 +43,12 @@
 rm -rf $HOME/backup/firstdb
 mkdir -p $HOME/backup/firstdb
 
-pg_dump -h localhost -d firstdb -p 9143 -U backup_user -O -Fc > $HOME/backup/firstdb.dump
+# TODO: через cron забиндить генерацию бэкапов 2 раза в день:
+#  ввести команду "crontab -e" и скопипастить это:
+#0 2 pg_dump -h localhost -d firstdb -p 9143 -U backup_user -O -Fc > "$HOME/backup/firstdb_$(date +\%Y\%m\%d_\%H\%M).dump"
+#0 14 pg_dump -h localhost -d firstdb -p 9143 -U backup_user -O -Fc > "$HOME/backup/firstdb_$(date +\%Y\%m\%d_\%H\%M).dump"
 
-
-
+pg_dump -h localhost -d firstdb -p 9143 -U backup_user -O -Fc > "$HOME/backup/firstdb_$(date +\%Y\%m\%d_\%H\%M).dump"
 # Отправка дампов на второй узел
-rsync -avzP $HOME/backup/* postgres0@pg191:~/backup/
 
-# TODO: через cron забиндить отправку данных 2 раза в день
+rsync -avzP $HOME/backup/* postgres0@pg191:~/backup/
