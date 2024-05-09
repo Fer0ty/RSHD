@@ -1,0 +1,1 @@
+scp  $HOME/backup/firstdb_20240510_0052.dump lab2:~/backup/
