@@ -27,5 +27,5 @@
 
 #cd $PGDATA
 createdb -h localhost -p 9143 seconddb
-pg_restore -h localhost -p 9143 -d seconddb -x -c $HOME/backup/firstdb.dump
+pg_restore -h localhost -p 9143 -d seconddb -x -c $HOME/backup/firstdb_20240509_2018.dump
 psql -h localhost -p 9143 -d seconddb

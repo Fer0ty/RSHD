@@ -1,3 +1,6 @@
+export PGDATA=$HOME/pg_database1
+export PGDATABASE=template1
+export PGPORT=9143
 # создание
 mkdir -p $PGDATA
 initdb -D $PGDATA --encoding=UTF8 --locale=ru_RU.UTF-8
