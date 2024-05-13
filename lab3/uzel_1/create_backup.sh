@@ -40,10 +40,10 @@
 # Источник: https://timeweb.cloud/tutorials/postgresql/dampy-v-postgresql
 
 # создание резервного копирования
-rm -rf $HOME/backup/firstdb
-mkdir -p $HOME/backup/firstdb
+#rm -rf $HOME/backup/firstdb
+#mkdir -p $HOME/backup/firstdb
 
-# TODO: через cron забиндить генерацию бэкапов 2 раза в день:
+
 #  ввести команду "crontab -e" и скопипастить это:
 #0 2 pg_dump -h localhost -d firstdb -p 9143 -U backup_user -O -Fc > "$HOME/backup/firstdb_$(date +\%Y\%m\%d_\%H\%M).dump"
 #0 14 pg_dump -h localhost -d firstdb -p 9143 -U backup_user -O -Fc > "$HOME/backup/firstdb_$(date +\%Y\%m\%d_\%H\%M).dump"
